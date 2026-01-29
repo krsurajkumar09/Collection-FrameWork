@@ -127,6 +127,14 @@ public class ArrayAndArrayList {
         Collections.sort(list);
         System.out.println("After sort(): " + list);
 
+        // reverse sort
+
+        // Collections.sort(list, Collections.reverseOrder());
+          list.sort(Collections.reverseOrder());  // preferred over above method
+//        list.sort((a, b) -> Integer.compare(b, a));  // Using Lamba functions
+
+        System.out.println("reversed list :" +list); // [30, 20, 10, 5]
+
         // clear()
         list.clear();
         System.out.println("After clear(): " + list);
