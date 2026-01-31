@@ -1,9 +1,6 @@
 package collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class ArrayAndArrayList {
 
@@ -19,9 +16,9 @@ public class ArrayAndArrayList {
 
         // Add elements
         arr[0] = 10;
-        arr[1] = 20;
-        arr[2] = 30;
-        arr[3] = 40;
+        arr[1] = 90;
+        arr[2] = 80;
+        arr[3] = 60;
         arr[4] = 50;
 
         // Access elements
@@ -47,9 +44,23 @@ public class ArrayAndArrayList {
         // Update
         arr[2] = 99;
         System.out.println("Updated index 2: " + arr[2]);
+        System.out.print("After updating array at index 2: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        // Sort
+        Arrays.sort(arr);   // ascending only   Arrays belongs to JCF
+        System.out.print("After Sorting the primitive Array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
 
         // Arrays are fixed size (cannot add/remove)
-        System.out.println("Arrays are fixed size ❌");
+        System.out.println("Arrays are fixed size ");
         System.out.println();
     }
 
@@ -124,7 +135,9 @@ public class ArrayAndArrayList {
         System.out.println();
 
         // sort()
-        Collections.sort(list);
+//        Collections.sort(list);
+//        list.sort(null);  // preferred over previous method
+        list.sort(Integer::compare);  // another way tyo sort the list
         System.out.println("After sort(): " + list);
 
         // reverse sort
