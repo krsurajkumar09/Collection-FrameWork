@@ -1,0 +1,83 @@
+ONE-PAGE JCF DECISION CHART
+🔹 LIST (Ordered, duplicates allowed)
+
+Need fast index access (get/set)?
+→ ArrayList
+
+O(1) get, cache-friendly, default choice
+
+Need FIFO / LIFO behavior?
+→ ArrayDeque (preferred)
+→ LinkedList (legacy, avoid unless required)
+
+Need thread-safe, read-heavy list?
+→ CopyOnWriteArrayList
+
+Writes are costly, reads are lock-free
+
+
+🔹 SET (Unique elements only)
+
+Need uniqueness only (fastest)?
+→ HashSet
+Backed by HashMap, O(1) average
+
+Need sorted unique elements?
+→ TreeSet
+Red-Black Tree, O(log n)
+
+Need uniqueness + insertion order?
+→ LinkedHashSet
+HashSet + doubly-linked list
+
+
+🔹 MAP (Key → Value)
+
+Need the fastest key lookup?
+→ HashMap
+Default map, O(1) average
+
+
+Need sorted keys / range queries?
+→ TreeMap
+NavigableMap, O(log n)
+
+Need thread-safe map (high concurrency)?
+→ ConcurrentHashMap
+No global lock, segment-based
+
+
+Need LRU / insertion-ordered cache?
+→ LinkedHashMap
+accessOrder = true → LRU
+
+
+
+🔹 QUEUE / STACK
+
+FIFO or LIFO (stack/queue/deque)?
+→ ArrayDeque
+
+Replaces Stack, faster than LinkedList
+
+Priority-based ordering?
+→ PriorityQueue
+
+Heap, not fully sorted
+
+Producer–Consumer / blocking?
+→ BlockingQueue
+
+e.g. ArrayBlockingQueue, LinkedBlockingQueue
+
+
+
+“I default to ArrayList, HashMap, HashSet, and ArrayDeque.
+I switch only when I need ordering, priority, or concurrency.”
+❌ Stack → ✅ ArrayDeque
+
+❌ Hashtable → ✅ ConcurrentHashMap
+
+LinkedList → rarely justified
+
+If unsure → HashMap / ArrayList first

@@ -1,0 +1,19 @@
+Need order + duplicates?
+→ ArrayList
+
+Need uniqueness?
+→ HashSet
+
+Need key-value?
+→ HashMap
+
+Need FIFO / LIFO?
+→ ArrayDeque
+
+Need priority?
+→ PriorityQueue
+
+***Need sorted? (Rarely Required for NeetCode 150)
+→ TreeMap / TreeSet
+
+
