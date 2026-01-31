@@ -4,6 +4,7 @@ package main;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import collections.ArrayAndArrayList;
 import collections.CopyOnWriteArrayListDemo;
+import collections.LinkedListMethods;
 import collections.ListMethods;
 
 public class Main {
@@ -14,7 +15,8 @@ public class Main {
 //        ArrayAndArrayList.arrayDemo();
 //        ArrayAndArrayList.arrayListDemo();
 //        ListMethods.runListMethodsDemo();
-        CopyOnWriteArrayListDemo.runCopyOnWriteArrayListDemo();
+//        CopyOnWriteArrayListDemo.runCopyOnWriteArrayListDemo();
+          LinkedListMethods.runLinkedListMethodsDemo();
 
     }
 }
