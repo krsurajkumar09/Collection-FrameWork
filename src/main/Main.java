@@ -1,22 +1,19 @@
 package main;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-import collections.ArrayAndArrayList;
-import collections.CopyOnWriteArrayListDemo;
-import collections.LinkedListMethods;
-import collections.ListMethods;
+import collections.*;
 
 public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.println("Hello and welcome!");
-        ArrayAndArrayList.arrayDemo();
-        ArrayAndArrayList.arrayListDemo();
+//        ArrayAndArrayList.arrayDemo();
+//        ArrayAndArrayList.arrayListDemo();
 //        ListMethods.runListMethodsDemo();
 //        CopyOnWriteArrayListDemo.runCopyOnWriteArrayListDemo();
 //        LinkedListMethods.runLinkedListMethodsDemo();
+        HashMapMethodsDemo.runHashMapDemo();
+
 
     }
 }
