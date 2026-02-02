@@ -12,7 +12,9 @@ public class Main {
 //        ListMethods.runListMethodsDemo();
 //        CopyOnWriteArrayListDemo.runCopyOnWriteArrayListDemo();
 //        LinkedListMethods.runLinkedListMethodsDemo();
-        HashMapMethodsDemo.runHashMapDemo();
+//        HashMapMethodsDemo.runHashMapDemo();
+        HashSetMethods.runHashSetMethodsDemo();
+        HashSetBulkOperations.runBulkOperationsDemo();
 
 
     }
