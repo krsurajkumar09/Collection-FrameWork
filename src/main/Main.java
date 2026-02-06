@@ -6,6 +6,8 @@ import collections.HashMapMethodsDemo;
 import collections.HashSetBulkOperations;
 import collections.HashSetMethods;
 import collections.ListMethods;
+import collections.UsefulforDSA.ArrayDequeMethods;
+import collections.UsefulforDSA.PriorityQueueMethodsDemo;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +22,8 @@ public class Main {
         HashMapMethodsDemo.runHashMapDemo();
         HashSetMethods.runHashSetMethodsDemo();
         HashSetBulkOperations.runBulkOperationsDemo();
+        ArrayDequeMethods.runAllDemos();
+        PriorityQueueMethodsDemo.runPriorityQueueDemo();
 
 
     }
