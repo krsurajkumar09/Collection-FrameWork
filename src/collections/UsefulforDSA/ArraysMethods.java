@@ -5,7 +5,7 @@ import java.util.stream.*;
 
 public class ArraysMethods {
 
-    public static void main(String[] args) {
+    public static void arraysDemo() {
 
         // =====================================================
         // 1️⃣ SORTING
@@ -117,6 +117,5 @@ public class ArraysMethods {
 
         System.out.print("spliterator(): ");
         spliterator.forEachRemaining(System.out::print);
-
     }
 }

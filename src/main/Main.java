@@ -5,16 +5,14 @@ import collections.HashMapMethodsDemo;
 import collections.HashSetBulkOperations;
 import collections.HashSetMethods;
 import collections.ListMethods;
-import collections.UsefulforDSA.ArrayAndArrayList;
-import collections.UsefulforDSA.ArrayDequeMethods;
-import collections.UsefulforDSA.PriorityQueueMethodsDemo;
-import collections.UsefulforDSA.StringMethods;
+import collections.UsefulforDSA.*;
 
 public class Main {
     public static void main(String[] args) {
           System.out.println("Hello and welcome!");
 //          ArrayAndArrayList.arrayDemo();
 //          ArrayAndArrayList.arrayListDemo();
+            ArraysMethods.arraysDemo();
 ////        ListMethods.runListMethodsDemo();
 ////        CopyOnWriteArrayListDemo.runCopyOnWriteArrayListDemo();
 ////        LinkedListMethods.runLinkedListMethodsDemo();
