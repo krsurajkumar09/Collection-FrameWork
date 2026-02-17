@@ -12,16 +12,17 @@ public class ArrayAndArrayList {
         System.out.println("===== BASIC ARRAY DEMO =====");
 
         // Declaration & Initialization
-        int[] arr = new int[5];
-//      or Method 2: Direct initialization
-//      int[] arr = {10, 20, 30, 40, 15};
+//        int[] arr = new int[5];
 
         // Add elements
-        arr[0] = 10;
-        arr[1] = 90;
-        arr[2] = 80;
-        arr[3] = 60;
-        arr[4] = 50;
+//        arr[0] = 10;
+//        arr[1] = 90;
+//        arr[2] = 80;
+//        arr[3] = 60;
+//        arr[4] = 50;
+
+//      or Method 2: Direct initialization
+        int[] arr = {10, 20, 30, 40, 15};
 
         // Access elements
         System.out.println("Element at index 2: " + arr[2]);
