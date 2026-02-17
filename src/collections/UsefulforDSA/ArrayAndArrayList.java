@@ -1,4 +1,4 @@
-package collections;
+package collections.UsefulforDSA;
 
 import java.util.*;
 
@@ -49,15 +49,6 @@ public class ArrayAndArrayList {
             System.out.print(num + " ");
         }
         System.out.println();
-
-        // Sort
-        Arrays.sort(arr);   // ascending only   Arrays belongs to JCF
-        System.out.print("After Sorting the primitive Array: ");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
-
 
         // Arrays are fixed size (cannot add/remove)
         System.out.println("Arrays are fixed size ");
