@@ -13,6 +13,8 @@ public class ArrayAndArrayList {
 
         // Declaration & Initialization
         int[] arr = new int[5];
+//      or Method 2: Direct initialization
+//      int[] arr = {10, 20, 30, 40, 15};
 
         // Add elements
         arr[0] = 10;
