@@ -18,10 +18,38 @@ public class ArraysMethods {
         Arrays.parallelSort(numbers);
         System.out.println("Parallel Sorted: " + Arrays.toString(numbers));
 
-        // Descending Order (Primitive way)
+        // Descending Order (Non- Primitive array)
         Integer[] numsObj = {5, 2, 9, 1, 7};
         Arrays.sort(numsObj, Collections.reverseOrder());
         System.out.println("Sorted (Descending): " + Arrays.toString(numsObj));
+
+
+//        Correct way for primitive int[]
+//        Method A — sort ascending then reverse manually
+//        Most preferred for interview
+        int[] nums = {5, 2, 9, 1, 7};
+
+        Arrays.sort(nums); // ascending
+
+        // reverse array
+        for (int i = 0; i < nums.length / 2; i++) {
+            int temp = nums[i];
+            nums[i] = nums[nums.length - 1 - i];
+            nums[nums.length - 1 - i] = temp;
+        }
+
+        System.out.println("Sorted (Descending): " + Arrays.toString(nums));
+
+//        Method B — use Stream (Java 8+)
+        int[] numbersArray = {5, 2, 9, 1, 7};
+
+        int[] desc = Arrays.stream(numbersArray)
+                .boxed()
+                .sorted(Collections.reverseOrder())
+                .mapToInt(Integer::intValue)
+                .toArray();
+
+        System.out.println("Sorted (Descending): " + Arrays.toString(desc));
 
 
         // =====================================================
