@@ -5,145 +5,197 @@ import java.util.stream.*;
 
 public class ArraysMethods {
 
+    /*
+     =============================================================
+     ARRAYS UTILITY CLASS – COMPLETE GUIDE WITH COMPLEXITY
+     =============================================================
+
+     Arrays class introduced: Java 1.2
+
+     Sorting Internals:
+     - Primitive sort → Dual-Pivot QuickSort
+     - Object sort → TimSort
+     - parallelSort → ForkJoinPool (multi-threaded)
+
+     =============================================================
+    */
+
     public static void arraysDemo() {
 
         // =====================================================
         // 1️⃣ SORTING
         // =====================================================
+
         int[] numbers = {5, 2, 9, 1, 7};
 
+        // ✅ Arrays.sort(int[]) → Java 1.2
+        // Time: O(n log n)
+        // Space: O(log n) (recursion stack)
         Arrays.sort(numbers);
-        System.out.println("Sorted (Ascending): " + Arrays.toString(numbers));
 
+        // ✅ Arrays.parallelSort(int[]) → Java 8
+        // Time: O(n log n)
+        // Space: O(log n)
+        // Uses multi-threading (better for large arrays)
         Arrays.parallelSort(numbers);
-        System.out.println("Parallel Sorted: " + Arrays.toString(numbers));
 
-        // Descending Order (Non- Primitive array)
+        // ✅ Arrays.sort(Object[], Comparator) → Java 1.2
+        // Time: O(n log n)
+        // Space: O(n) (TimSort temporary arrays)
         Integer[] numsObj = {5, 2, 9, 1, 7};
         Arrays.sort(numsObj, Collections.reverseOrder());
-        System.out.println("Sorted (Descending): " + Arrays.toString(numsObj));
 
-
-//        Correct way for primitive int[]
-//        Method A — sort ascending then reverse manually
-//        Most preferred for interview
+        // =====================================================
+        // DESCENDING FOR PRIMITIVE (Manual Reverse)
+        // =====================================================
         int[] nums = {5, 2, 9, 1, 7};
 
-        Arrays.sort(nums); // ascending
+        // sort → O(n log n)
+        Arrays.sort(nums);
 
-        // reverse array
+        // reverse → O(n)
         for (int i = 0; i < nums.length / 2; i++) {
             int temp = nums[i];
             nums[i] = nums[nums.length - 1 - i];
             nums[nums.length - 1 - i] = temp;
         }
 
-        System.out.println("Sorted (Descending): " + Arrays.toString(nums));
-
-//        Method B — use Stream (Java 8+)
-        int[] numbersArray = {5, 2, 9, 1, 7};
-
-        int[] desc = Arrays.stream(numbersArray)
+        // =====================================================
+        // DESCENDING USING STREAM (Java 8+)
+        // =====================================================
+        // Time: O(n log n)
+        // Space: O(n)
+        int[] desc = Arrays.stream(nums)
                 .boxed()
                 .sorted(Collections.reverseOrder())
                 .mapToInt(Integer::intValue)
                 .toArray();
 
-        System.out.println("Sorted (Descending): " + Arrays.toString(desc));
-
-
         // =====================================================
         // 2️⃣ BINARY SEARCH
         // =====================================================
-        int index = Arrays.binarySearch(numbers, 7);
-        System.out.println("Binary Search (7 found at): " + index);
 
+        // ✅ Arrays.binarySearch() → Java 1.2
+        // Time: O(log n)
+        // Space: O(1)
+        int index = Arrays.binarySearch(numbers, 7);
 
         // =====================================================
         // 3️⃣ TO STRING
         // =====================================================
-        System.out.println("toString(): " + Arrays.toString(numbers));
+
+        // ✅ toString() → Java 1.5
+        // Time: O(n)
+        Arrays.toString(numbers);
 
         int[][] matrix = {{1,2},{3,4}};
-        System.out.println("deepToString(): " + Arrays.deepToString(matrix));
 
+        // ✅ deepToString() → Java 1.5
+        // Time: O(n) (all elements)
+        Arrays.deepToString(matrix);
 
         // =====================================================
         // 4️⃣ EQUALS & DEEP EQUALS
         // =====================================================
+
         int[] arr1 = {1,2,3};
         int[] arr2 = {1,2,3};
 
-        System.out.println("equals(): " + Arrays.equals(arr1, arr2));
-        System.out.println("deepEquals(): " + Arrays.deepEquals(
+        // ✅ equals() → Java 1.2
+        // Time: O(n)
+        Arrays.equals(arr1, arr2);
+
+        // ✅ deepEquals() → Java 1.5
+        // Time: O(n)
+        Arrays.deepEquals(
                 new Object[]{matrix},
                 new Object[]{matrix}
-        ));
-
+        );
 
         // =====================================================
-        // 5️⃣ COMPARE & MISMATCH (Java 9+)
+        // 5️⃣ COMPARE & MISMATCH
         // =====================================================
+
         int[] a = {1,2,3};
         int[] b = {1,2,4};
 
-        System.out.println("compare(): " + Arrays.compare(a, b));
-        System.out.println("mismatch(): " + Arrays.mismatch(a, b));
+        // ✅ compare() → Java 9
+        // Time: O(n)
+        Arrays.compare(a, b);
 
+        // ✅ mismatch() → Java 9
+        // Time: O(n)
+        Arrays.mismatch(a, b);
 
         // =====================================================
         // 6️⃣ FILL
         // =====================================================
+
         int[] fillArray = new int[5];
+
+        // ✅ fill() → Java 1.2
+        // Time: O(n)
         Arrays.fill(fillArray, 10);
-        System.out.println("fill(): " + Arrays.toString(fillArray));
 
+        // ✅ fill(range) → Java 1.2
+        // Time: O(k) (range size)
         Arrays.fill(fillArray, 1, 3, 99);
-        System.out.println("fill range(): " + Arrays.toString(fillArray));
-
 
         // =====================================================
         // 7️⃣ COPY
         // =====================================================
+
+        // ✅ copyOf() → Java 1.6
+        // Time: O(n)
+        // Space: O(n)
         int[] copy = Arrays.copyOf(numbers, 7);
-        System.out.println("copyOf(): " + Arrays.toString(copy));
 
+        // ✅ copyOfRange() → Java 1.6
+        // Time: O(k)
+        // Space: O(k)
         int[] rangeCopy = Arrays.copyOfRange(numbers, 1, 4);
-        System.out.println("copyOfRange(): " + Arrays.toString(rangeCopy));
-
 
         // =====================================================
-        // 8️⃣ AS LIST
+        // 8️⃣ asList()
         // =====================================================
+
+        // ✅ asList() → Java 1.2
+        // Time: O(1)
+        // Returns fixed-size list backed by array
         List<String> list = Arrays.asList("A", "B", "C");
-        System.out.println("asList(): " + list);
-
 
         // =====================================================
-        // 9️⃣ STREAM
+        // 9️⃣ stream()
         // =====================================================
+
+        // ✅ stream() → Java 8
+        // Time: O(n) (traversal)
         IntStream stream = Arrays.stream(numbers);
-        System.out.println("Stream Sum: " + stream.sum());
-
+        stream.sum();
 
         // =====================================================
         // 🔟 setAll & parallelSetAll
         // =====================================================
+
         int[] setAllArray = new int[5];
+
+        // ✅ setAll() → Java 8
+        // Time: O(n)
         Arrays.setAll(setAllArray, i -> i * 2);
-        System.out.println("setAll(): " + Arrays.toString(setAllArray));
 
+        // ✅ parallelSetAll() → Java 8
+        // Time: O(n) (parallel execution)
         Arrays.parallelSetAll(setAllArray, i -> i * 3);
-        System.out.println("parallelSetAll(): " + Arrays.toString(setAllArray));
-
 
         // =====================================================
-        // 1️⃣1️⃣ spliterator
+        // 1️⃣1️⃣ spliterator()
         // =====================================================
+
+        // ✅ spliterator() → Java 8
+        // Time: O(n) traversal
         Spliterator<Integer> spliterator =
                 Arrays.spliterator(numsObj);
 
-        System.out.print("spliterator(): ");
         spliterator.forEachRemaining(System.out::print);
     }
 }
