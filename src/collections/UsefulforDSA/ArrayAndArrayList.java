@@ -4,148 +4,271 @@ import java.util.*;
 
 public class ArrayAndArrayList {
 
-    // ===============================
-    // 1️⃣ BASIC JAVA ARRAY DEMO
-    // ===============================
-    public static void arrayDemo() {
+    /*
+     =============================================================
+     ARRAYS & ARRAYLIST FOR DSA – COMPLETE GUIDE (WITH COMPLEXITY)
+     =============================================================
 
-        System.out.println("===== BASIC ARRAY DEMO =====");
+     ARRAYS:
+     - Introduced in Java 1.0
+     - Fixed size
+     - Contiguous memory
+     - Fastest random access structure
 
-        // Declaration & Initialization
-//        int[] arr = new int[5];
+     ARRAYLIST:
+     - Introduced in Java 1.2
+     - Dynamic array (Resizable)
+     - Internally backed by Object[]
+     - Growth formula:
+         newCapacity = oldCapacity + (oldCapacity >> 1)
+         (~1.5x growth)
 
-        // Add elements
-//        arr[0] = 10;
-//        arr[1] = 90;
-//        arr[2] = 80;
-//        arr[3] = 60;
-//        arr[4] = 50;
+     Default Capacity (ArrayList):
+         10 (after first add)
 
-//      or Method 2: Direct initialization
-        int[] arr = {10, 20, 30, 40, 15};
+     =============================================================
+    */
 
-        // Access elements
-        System.out.println("Element at index 2: " + arr[2]);
+    // ============================================================
+    // 🥇 MUST-KNOW ARRAY OPERATIONS
+    // ============================================================
 
-        // Length
-        System.out.println("Array length: " + arr.length);
+    public static void mustKnowArrayOperations() {
 
-        // Traverse using for loop
-        System.out.print("Using for loop: ");
+        int[] arr = {10, 20, 30, 40};
+
+        // ✅ Access → Java 1.0
+        // Time: O(1)
+        // Space: O(1)
+        System.out.println("arr[2]: " + arr[2]);
+
+        // ✅ Update → Java 1.0
+        // Time: O(1)
+        arr[2] = 99;
+
+        // ✅ length → Java 1.0 (field, not method)
+        // Time: O(1)
+        System.out.println("length: " + arr.length);
+
+        // ✅ Traversal → Java 1.0
+        // Time: O(n)
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
         System.out.println();
 
-        // Traverse using enhanced for loop
-        System.out.print("Using enhanced for loop: ");
+        // ✅ Enhanced for → Java 5
+        // Time: O(n)
         for (int num : arr) {
             System.out.print(num + " ");
         }
         System.out.println();
 
-        // Update
-        arr[2] = 99;
-        System.out.println("Updated index 2: " + arr[2]);
-        System.out.print("After updating array at index 2: ");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
+        // ✅ Arrays.sort() → Java 1.2
+        // Primitive: Dual-Pivot QuickSort
+        // Time: O(n log n)
+        // Space: O(log n) (recursion stack)
+        Arrays.sort(arr);
 
-        // Arrays are fixed size (cannot add/remove)
-        System.out.println("Arrays are fixed size ");
-        System.out.println();
+        // ✅ Arrays.toString() → Java 1.5
+        // Time: O(n)
+        System.out.println("Sorted: " + Arrays.toString(arr));
     }
 
-    // ===============================
-    // 2️⃣ ARRAYLIST DEMO
-    // ===============================
-    public static void arrayListDemo() {
+    // ============================================================
+    // 🥇 MUST-KNOW ARRAYLIST METHODS
+    // ============================================================
 
-        System.out.println("===== ARRAYLIST DEMO =====");
+    public static void mustKnowArrayListMethods() {
 
-        // Declaration
         List<Integer> list = new ArrayList<>();
 
-        // add()
+        // ✅ add(E e) → Java 1.2
+        // Amortized: O(1)
+        // Worst (resize): O(n)
+        // Space: O(n)
         list.add(10);
         list.add(20);
-        list.add(30);
-        list.add(40);
 
-        // add(index, element)
-        list.add(2, 25);
+        // ✅ add(index, E e) → Java 1.2
+        // Time: O(n) (shifting)
+        list.add(1, 15);
 
-        System.out.println("After add operations: " + list);
+        // ✅ get(index) → Java 1.2
+        // Time: O(1)
+        System.out.println("get(1): " + list.get(1));
 
-        // get()
-        System.out.println("Element at index 1: " + list.get(1));
-
-        // size()
-        System.out.println("Size: " + list.size());
-
-        // contains()
-        System.out.println("Contains 30? " + list.contains(30));
-
-        // indexOf()
-        System.out.println("Index of 40: " + list.indexOf(40));
-
-        // remove(index)
-        list.remove(2);
-        System.out.println("After remove(index): " + list);
-
-        // remove(Object)
-        list.remove(Integer.valueOf(40));
-        System.out.println("After remove(object): " + list);
-
-        // set(index, element)
+        // ✅ set(index, E e) → Java 1.2
+        // Time: O(1)
         list.set(1, 99);
-        System.out.println("After set(): " + list);
 
-        // isEmpty()
-        System.out.println("Is empty? " + list.isEmpty());
+        // ✅ remove(index) → Java 1.2
+        // Time: O(n) (shifting)
+        list.remove(1);
 
-        // Iteration - for loop
-        System.out.print("For loop: ");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i) + " ");
-        }
-        System.out.println();
+        // ✅ size() → Java 1.2
+        // Time: O(1)
+        System.out.println("size(): " + list.size());
 
-        // Iteration - enhanced for
-        System.out.print("Enhanced for loop: ");
-        for (Integer num : list) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
+        // ✅ sort(Comparator) → Java 8
+        // Time: O(n log n)
+        // Space: O(n) (TimSort)
+        list.sort(Integer::compare);
 
-        // Iterator
-        System.out.print("Iterator: ");
-        Iterator<Integer> iterator = list.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
-        }
-        System.out.println();
+        // Natural order
+        list.sort(null);
 
-        // sort()
-//        Collections.sort(list);
-//        list.sort(null);  // preferred over previous method
-        list.sort(Integer::compare);  // another way tyo sort the list
-        System.out.println("After sort(): " + list);
+        // Descending
+        list.sort(Collections.reverseOrder());
 
-        // reverse sort
+        // Descending (Java 8)
+        list.sort(Comparator.reverseOrder());
 
-        // Collections.sort(list, Collections.reverseOrder());
-          list.sort(Collections.reverseOrder());  // preferred over above method
-//        list.sort((a, b) -> Integer.compare(b, a));  // Using Lamba functions
+        System.out.println("Final List: " + list);
+    }
 
-        System.out.println("reversed list :" +list); // [30, 20, 10, 5]
+    // ============================================================
+    // 🥈 IMPORTANT BUT LESS FREQUENT
+    // ============================================================
 
-        // clear()
+    public static void importantArrayListMethods() {
+
+        List<Integer> list = new ArrayList<>();
+        list.add(10);
+        list.add(20);
+
+        // ✅ contains(Object o) → Java 1.2
+        // Time: O(n)
+        list.contains(10);
+
+        // ✅ indexOf(Object o) → Java 1.2
+        // Time: O(n)
+        list.indexOf(20);
+
+        // ✅ isEmpty() → Java 1.2
+        // Time: O(1)
+        list.isEmpty();
+
+        // ✅ clear() → Java 1.2
+        // Time: O(n)
         list.clear();
-        System.out.println("After clear(): " + list);
+    }
 
-        System.out.println();
+    // ============================================================
+    // ❌ RARELY USED FOR DSA
+    // ============================================================
+
+    public static void rarelyUsedMethods() {
+
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+
+        // ✅ iterator() → Java 1.2
+        // Time to iterate: O(n)
+        Iterator<Integer> it = list.iterator();
+
+        // ✅ replaceAll() → Java 8
+        // Time: O(n)
+        list.replaceAll(x -> x * 2);
+
+        // ✅ removeIf() → Java 8
+        // Time: O(n)
+        list.removeIf(x -> x % 2 == 0);
+
+        // ✅ ensureCapacity(int) → Java 1.2
+        // Time: O(n) if resizing
+        ((ArrayList<Integer>) list).ensureCapacity(50);
+
+        // ✅ trimToSize() → Java 1.2
+        // Time: O(n)
+        ((ArrayList<Integer>) list).trimToSize();
+    }
+
+    // ============================================================
+    // 🔥 REAL INTERVIEW PATTERNS
+    // ============================================================
+
+    // 1️⃣ Two Pointer after sorting
+    // Time: O(n log n) (sorting)
+    // Space: O(1)
+    public static void twoPointerExample() {
+
+        int[] arr = {1, 4, 3, 2};
+        Arrays.sort(arr);
+
+        int left = 0, right = arr.length - 1;
+
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+
+            if (sum == 5) {
+                System.out.println("Pair Found: " + arr[left] + ", " + arr[right]);
+                break;
+            } else if (sum < 5) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+    }
+
+    // 2️⃣ Backtracking Pattern
+    // add() → O(1)
+    // remove(last) → O(1)
+    public static void backtrackingExample() {
+
+        List<Integer> current = new ArrayList<>();
+
+        current.add(1);
+        current.add(2);
+
+        current.remove(current.size() - 1);
+
+        System.out.println("Backtracking List: " + current);
+    }
+
+    // 3️⃣ Array → ArrayList
+    // Time: O(n)
+    // Space: O(n)
+    public static void arrayToArrayList() {
+
+        Integer[] arr = {10, 20, 30};
+
+        List<Integer> list =
+                new ArrayList<>(Arrays.asList(arr));
+
+        System.out.println("Converted List: " + list);
+    }
+
+    // 4️⃣ Primitive Array → List
+    // Time: O(n)
+    // Space: O(n)
+    public static void primitiveArrayToList() {
+
+        int[] arr = {1, 2, 3};
+
+        List<Integer> list =
+                Arrays.stream(arr)
+                        .boxed()
+                        .toList(); // Java 16+
+
+        System.out.println("Primitive Converted: " + list);
+    }
+
+    // ============================================================
+    // MAIN
+    // ============================================================
+
+    public static void main(String[] args) {
+
+        mustKnowArrayOperations();
+        mustKnowArrayListMethods();
+        importantArrayListMethods();
+        rarelyUsedMethods();
+
+        twoPointerExample();
+        backtrackingExample();
+        arrayToArrayList();
+        primitiveArrayToList();
     }
 }
