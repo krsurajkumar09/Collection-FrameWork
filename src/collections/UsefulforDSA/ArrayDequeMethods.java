@@ -6,119 +6,146 @@ import java.util.Iterator;
 
 public class ArrayDequeMethods {
 
-    public static void runAllDemos() {
+    /*
+     =============================================================
+     ARRAYDEQUE – DSA MASTER FILE
+     =============================================================
 
-        System.out.println("\n================ ARRAYDEQUE DEMO ================\n");
+     Introduced: Java 1.6
+     Internally: Resizable Circular Array
+     Default Capacity: 16
+     Growth: Doubles when full
 
-        fifoQueueDemo();
-        lifoStackDemo();
-        dequeBothEndsDemo();
-        commonMethodsDemo();
-        iterationDemo();
-    }
+     ✔ No null elements allowed
+     ✔ Not thread-safe
+     ✔ Faster than LinkedList for queue/stack
 
-    // -------------------------------------------------
-    // 1️⃣ FIFO – Queue behavior
-    // -------------------------------------------------
+     =============================================================
+     🔥 MOST USED IN DSA:
+     -------------------------------------------------------------
+     push(), pop()
+     offer(), poll()
+     peek(), peekFirst(), peekLast()
+     addFirst(), addLast()
+     =============================================================
+    */
+
+    // =============================================================
+    // 1️⃣ FIFO – Queue Behavior (🔥 VERY COMMON IN DSA)
+    // =============================================================
     private static void fifoQueueDemo() {
 
         System.out.println("---- FIFO (QUEUE) DEMO ----");
 
         Deque<Integer> queue = new ArrayDeque<>();
 
-        // enqueue
+        // 🔥 offer(E) → Java 1.6
+        // Time: O(1) | Worst (resize): O(n)
         queue.offer(10);
         queue.offer(20);
         queue.offer(30);
 
-        System.out.println("Queue after offer(): " + queue);
+        System.out.println("Queue: " + queue);
 
-        // dequeue
-        System.out.println("poll(): " + queue.poll());
+        // 🔥 poll() → Java 1.6
+        // Time: O(1)
         System.out.println("poll(): " + queue.poll());
 
-        System.out.println("Queue now: " + queue);
+        // 🔥 peek() → Java 1.6
+        // Time: O(1)
+        System.out.println("peek(): " + queue.peek());
+
         System.out.println();
     }
 
-    // -------------------------------------------------
-    // 2️⃣ LIFO – Stack behavior (REPLACES Stack)
-    // -------------------------------------------------
+    // =============================================================
+    // 2️⃣ LIFO – Stack Behavior (🔥 REPLACES STACK CLASS)
+    // =============================================================
     private static void lifoStackDemo() {
 
         System.out.println("---- LIFO (STACK) DEMO ----");
 
         Deque<Integer> stack = new ArrayDeque<>();
 
-        // push
+        // 🔥 push(E) → Java 1.6
+        // Time: O(1)
         stack.push(10);
         stack.push(20);
         stack.push(30);
 
-        System.out.println("Stack after push(): " + stack);
+        System.out.println("Stack: " + stack);
 
-        // pop
-        System.out.println("pop(): " + stack.pop());
+        // 🔥 pop() → Java 1.6
+        // Time: O(1)
         System.out.println("pop(): " + stack.pop());
 
-        System.out.println("Stack now: " + stack);
+        // 🔥 peek() → Java 1.6
+        // Time: O(1)
+        System.out.println("peek(): " + stack.peek());
+
         System.out.println();
     }
 
-    // -------------------------------------------------
-    // 3️⃣ Deque – Both Ends
-    // -------------------------------------------------
+    // =============================================================
+    // 3️⃣ Deque – Both Ends (🔥 Sliding Window / Monotonic Queue)
+    // =============================================================
     private static void dequeBothEndsDemo() {
 
         System.out.println("---- DEQUE (BOTH ENDS) DEMO ----");
 
         Deque<String> deque = new ArrayDeque<>();
 
+        // 🔥 addFirst(E) → Java 1.6 | O(1)
         deque.addFirst("A");
+
+        // 🔥 addLast(E) → Java 1.6 | O(1)
         deque.addLast("B");
         deque.addLast("C");
-        deque.addFirst("START");
 
         System.out.println("Deque: " + deque);
 
+        // 🔥 removeFirst() → Java 1.6 | O(1)
         System.out.println("removeFirst(): " + deque.removeFirst());
+
+        // 🔥 removeLast() → Java 1.6 | O(1)
         System.out.println("removeLast(): " + deque.removeLast());
 
         System.out.println("Deque now: " + deque);
         System.out.println();
     }
 
-    // -------------------------------------------------
-    // 4️⃣ Common Inbuilt Methods
-    // -------------------------------------------------
+    // =============================================================
+    // 4️⃣ Common Methods
+    // =============================================================
     private static void commonMethodsDemo() {
 
         System.out.println("---- COMMON METHODS DEMO ----");
 
         Deque<Integer> deque = new ArrayDeque<>();
 
-        deque.add(1);       // addLast
+        // add(E) → Java 1.6 | O(1)
+        deque.add(1);
         deque.add(2);
-        deque.offer(3);     // addLast
 
-        System.out.println("Deque: " + deque);
-
-        System.out.println("peek(): " + deque.peek());
-        System.out.println("peekFirst(): " + deque.peekFirst());
-        System.out.println("peekLast(): " + deque.peekLast());
-
+        // contains(Object) → Java 1.6
+        // Time: O(n)
         System.out.println("contains(2): " + deque.contains(2));
+
+        // size() → Java 1.6 | O(1)
         System.out.println("size(): " + deque.size());
+
+        // isEmpty() → Java 1.6 | O(1)
         System.out.println("isEmpty(): " + deque.isEmpty());
 
+        // clear() → Java 1.6 | O(n)
         deque.clear();
-        System.out.println("After clear(): " + deque);
+
         System.out.println();
     }
 
-    // -------------------------------------------------
+    // =============================================================
     // 5️⃣ Iteration
-    // -------------------------------------------------
+    // =============================================================
     private static void iterationDemo() {
 
         System.out.println("---- ITERATION DEMO ----");
@@ -128,14 +155,14 @@ public class ArrayDequeMethods {
         deque.add("Spring");
         deque.add("React");
 
-        // foreach
+        // foreach → Java 5 | O(n)
         System.out.print("foreach: ");
         for (String s : deque) {
             System.out.print(s + " ");
         }
         System.out.println();
 
-        // iterator
+        // iterator() → Java 1.6 | O(n)
         System.out.print("iterator: ");
         Iterator<String> it = deque.iterator();
         while (it.hasNext()) {
@@ -143,7 +170,7 @@ public class ArrayDequeMethods {
         }
         System.out.println();
 
-        // descending iterator
+        // descendingIterator() → Java 1.6 | O(n)
         System.out.print("descendingIterator: ");
         Iterator<String> dit = deque.descendingIterator();
         while (dit.hasNext()) {
@@ -151,37 +178,54 @@ public class ArrayDequeMethods {
         }
         System.out.println("\n");
     }
+
+    // =============================================================
+    // MAIN METHOD
+    // =============================================================
+    public static void main(String[] args) {
+
+        System.out.println("================ ARRAYDEQUE DSA GUIDE ================\n");
+
+        fifoQueueDemo();
+        lifoStackDemo();
+        dequeBothEndsDemo();
+        commonMethodsDemo();
+        iterationDemo();
+
+        System.out.println("🔥 DSA GOLDEN RULE:");
+        System.out.println("Stack? → ArrayDeque");
+        System.out.println("Queue? → ArrayDeque");
+        System.out.println("Sliding Window / Monotonic Queue? → ArrayDeque");
+        System.out.println("Priority ordering? → PriorityQueue");
+    }
 }
 
 
-
-//✅ ArrayDeque does FIFO (Queue)
+//🔥 Most Used ArrayDeque Methods in DSA (Memorize These)
+//🥇 Stack Problems
 //
-//✅ ArrayDeque does LIFO (Stack)
+//push()
 //
-//✅ ArrayDeque does Deque (both ends)
+//pop()
 //
-//✅ Hence it replaces Stack, Queue, LinkedList
-
-
-//🧠 WHY ArrayDeque REPLACES EVERYTHING
-//Old Structure	Why Replaced	ArrayDeque Method
-//        Stack	Legacy, slow	push(), pop()
-//Queue	Limited	offer(), poll()
-//LinkedList	Memory heavy	Faster array-based
-//Deque	Interface only	addFirst(), addLast()
+//peek()
 //
-//        ✅ ArrayDeque = Stack + Queue + Deque (best default choice)
+//🥇 Queue Problems
 //
-// DSA GOLDEN RULE
-//Need Stack?
-//        → ArrayDeque
+//offer()
 //
-//Need Queue?
-//        → ArrayDeque
+//poll()
 //
-//Need Sliding Window / Monotonic Queue?
-//        → ArrayDeque
+//peek()
 //
-//Only need Priority?
-//        → PriorityQueue
+//🥇 Sliding Window / Monotonic Queue
+//
+//addLast()
+//
+//removeLast()
+//
+//peekFirst()
+//
+//removeFirst()
+//
+//Everything else = secondary.
